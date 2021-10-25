@@ -52,19 +52,27 @@ from current_emp;
 
 -- Employee count by department number
 SELECT COUNT(ce.emp_no), de.dept_no
---into ri_emp_dept
+into ri_emp_dept
 FROM current_emp as ce
 LEFT JOIN dept_emp as de
 ON ce.emp_no = de.emp_no
 GROUP BY de.dept_no
 order by de.dept_no;
 
--- finding dept names with count of employee
 select red.count, red.dept_no, d.dept_name
 from ri_emp_dept as red
 left join departments as d
 on red.dept_no = d.dept_no
 
-
-
-
+- sales list
+SELECT  ce.emp_no,
+		ce.first_name,
+		ce.last_name,
+		d.dept_name
+--INTO dept_info
+FROM current_emp as ce
+	INNER JOIN dept_emp AS de
+		ON (ce.emp_no = de.emp_no)
+	INNER JOIN departments AS d
+		ON (de.dept_no = d.dept_no)
+Where d.dept_name IN ('Sales', 'Development');

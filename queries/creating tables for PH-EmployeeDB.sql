@@ -26,7 +26,7 @@ CREATE TABLE titles (emp_no INT not null,
 					 from_date date not null,
 					 to_date date not null,
 					 FOREIGN KEY (emp_no) references employees (emp_no),
-					  PRIMARY key (emp_no));
+					 -- PRIMARY key (emp_no, title, from_date));
 					  
 				
 
